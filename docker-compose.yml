@@ -20,6 +20,9 @@ services:
     restart: on-failure
     ports:
       - 5432:5432
+    volumes:
+      - ./contrib/postgresql:/docker-entrypoint-initdb.d
+      #- ./db-data/:/var/lib/postgresql/data/
     networks:
       - FIAP-network
     env_file:
