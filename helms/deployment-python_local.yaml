@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-deployment
+spec:
+  template:
+    metadata:
+      name: python
+      labels:
+        app: python
+    spec:
+      containers:
+        - name: python
+          image: edersonpaz/foodieflow:v1
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - configMapRef: 
+                name: configmap-python
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: python-service
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+      targetPort: 8000
+  selector:
+    app: python

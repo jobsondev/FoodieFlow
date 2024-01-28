@@ -17,3 +17,6 @@ spec:
         image: "{{ .Values.python.image.repository }}:{{ .Values.python.image.tag }}"
         ports:
         - containerPort: 8000
+        resource:
+         requests:
+         cpu: 10m
