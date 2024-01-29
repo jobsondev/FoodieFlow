@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: python-service
 spec:
-  type: {{ .Values.python.service.type }}
+  type: NodePort
   ports:
-    - port: {{ .Values.python.service.port }}
-      targetPort: 8000
+    - port: 8000
+      nodePort: 30000 # 30000 - 32767
   selector:
     app: python
