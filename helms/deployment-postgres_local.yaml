@@ -3,9 +3,6 @@ kind: Deployment
 metadata:
   name: postgres-deployment
 spec:
-  selector:
-    matchLabels:
-      app: postgres
   template:
     metadata:
       labels:
@@ -26,17 +23,20 @@ spec:
         - name: postgres-storage
           persistentVolumeClaim:
             claimName: postgres-pvc
+  selector:
+    matchLabels:
+      app: postgres
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres-service
+  name: gestao-postgresql
 spec:
-  type: NodePort
   ports:
-    - port: 5432
+    - protocol: TCP
+      port: 5432
       targetPort: 5432
   selector:
     app: postgres

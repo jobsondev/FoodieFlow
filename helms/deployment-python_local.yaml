@@ -11,12 +11,29 @@ spec:
     spec:
       containers:
         - name: python
-          image: edersonpaz/foodieflow:v1
+          image: edersonpaz/foodieflow:v2
           ports:
-            - containerPort: 8000
+            - containerPort: 80
           envFrom:
             - configMapRef: 
                 name: configmap-python
+          livenessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 30
+          readinessProbe:
+            httpGet:
+              path: /healthcheck
+              port: 8000
+            periodSeconds: 10
+            failureThreshold: 3
+            initialDelaySeconds: 30
+          resources:
+            requests:
+              cpu: 10m
   replicas: 1
   selector:
     matchLabels:
@@ -32,6 +49,6 @@ spec:
   type: NodePort
   ports:
     - port: 8000
-      targetPort: 8000
+      nodePort: 30000 # 30000 - 32767
   selector:
     app: python
