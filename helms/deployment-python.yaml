@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
         - name: python
-          image: edersonpaz/foodieflow:v1
+          image: edersonpaz/foodieflow:v5
           ports:
             - containerPort: 80
           envFrom:
