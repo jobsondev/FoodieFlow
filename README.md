@@ -15,11 +15,22 @@ Um projeto para gerenciamento de produtos.
 ```bash
 kubectl apply -f .
 ```
+
 OBS: Caso não consiga acessar a aplicação atraves do localhost verifique atraves do comando abaixo o EXTERNAL IP.
+
+### Extra. Populando o banco de dados por script SQL
+
+1. Para popular o banco de dados deve ser forçado a porta `5432` pelo comando.
+
+```bash
+kubectl port-forward svc/gestao-postgresql 5432:5432
+```
+2. 
 
 ```bash
 kubectl get svc/loadbalancer-service 
 ```
+3. Add informações iniciais no banco de dados atraves dos arquivos `database_dafault_values` e `database_pedidos_values.sql`.
 
 ### Swagger: http://localhost:8000/docs
 
@@ -49,55 +60,7 @@ OBS: O parâmetro `-d` é para rodar em background, caso queira ver os logs, rem
 
 3. Acesse a aplicação `http://localhost:8000/healthcheck`
 
-4. Add informações iniciais no banco de dados
-
-```sql
--- Adicionando categorias
-
-INSERT INTO categoria (nome) VALUES 
-('Lanche'),
-('Acompanhamento'),
-('Bebida'),
-('Sobremesa');
-
--- Adicionando ingredientes de exemplo
-
--- Ingredientes para Lanches
-INSERT INTO ingrediente (nome) VALUES
-('Pão'),
-('Hambúrguer de Carne'),
-('Queijo'),
-('Alface'),
-('Tomate');
-
--- Ingredientes para Acompanhamentos
-INSERT INTO ingrediente (nome) VALUES
-('Batata Frita'),
-('Onion Rings');
-
--- Ingredientes para Bebidas
-INSERT INTO ingrediente (nome) VALUES
-('Água'),
-('Refrigerante'),
-('Suco de Laranja');
-
--- Ingredientes para Sobremesas
-INSERT INTO ingrediente (nome) VALUES
-('Sorvete'),
-('Calda de Chocolate'),
-('Chantilly');
-
--- Adicionando status
-
-INSERT INTO status (id, nome) VALUES
-(1, 'Recebido'),
-(2, 'Em preparação'),
-(3, 'Pronto'),
-(4, 'Finalizado');
-```
-5. Add massa de pedidos
-
-Utilize o arquivo `database_pedidos_values.sql` como referência.
+4. Add informações iniciais no banco de dados atraves dos arquivos `database_dafault_values` e `database_pedidos_values.sql`.
 
 ## Logging
 
