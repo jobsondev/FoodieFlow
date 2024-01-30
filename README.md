@@ -6,7 +6,7 @@ Um projeto para gerenciamento de produtos.
 
 ### Rodando no Docker-Kubernetes
 
-1. Verificar a disponibilidade da Porta 8000
+1. Verificar a disponibilidade da Porta `8000`
 
 2. Tenha instalado o `docker` e habilitado em configurações o kubernetes.
 
