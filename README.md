@@ -2,6 +2,25 @@
 
 Um projeto para gerenciamento de produtos.
 
+### Video demonstrativo https://youtu.be/5OkbzxH4nUw
+
+### Rodando no Docker-Kubernetes
+
+1. Verificar a disponibilidade da Porta 8000
+
+2. Tenha instalado o `docker` e habilitado em configurações o kubernetes.
+
+3. Abrir o Powershell na pasta helms do projeto e rode o comando abaixo para subir os pods.
+
+```bash
+kubectl apply -f .
+```
+OBS: Caso não consiga acessar a aplicação atraves do localhost verifique atraves do comando abaixo o EXTERNAL IP.
+
+```bash
+kubectl get svc/loadbalancer-service 
+```
+
 ### Swagger: http://localhost:8000/docs
 
 ### Redoc: http://localhost:8000/redoc

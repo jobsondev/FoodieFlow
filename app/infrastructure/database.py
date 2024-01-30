@@ -22,9 +22,13 @@ SQLALCHEMY_DATABASE_URL = (
 )
 #"postgresql://postgres:postgres@gestao-postgresql:5432/FIAP"
 Base = declarative_base()
+
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 def init_db():
+    if not Base.database_exists(SQLALCHEMY_DATABASE_URL):
+        # Create the database if it doesn't exist
+        Base.create_database(SQLALCHEMY_DATABASE_URL)
     Base.metadata.create_all(bind=engine)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
