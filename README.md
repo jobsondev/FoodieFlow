@@ -89,6 +89,7 @@ A aplicação utiliza várias bibliotecas e ferramentas, incluindo:
 - **uvloop**: Uma implementação baseada em Cython do asyncio event loop.
 - **python-decouple**: Uma biblioteca para separar configurações do código Python.
 - **pipreqs**: Uma ferramenta que ajuda a gerar um arquivo `requirements.txt` com as dependências do projeto.
+- **python-dotenv**: O python-dotenv é uma biblioteca em Python que simplifica a carga de variáveis de ambiente a partir de arquivos `.env`.
 
 Consulte o arquivo `requirements.txt` para uma lista completa das dependências.
 
