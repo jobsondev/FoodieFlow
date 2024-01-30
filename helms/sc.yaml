@@ -1,8 +1,0 @@
-apiVersion: storage.k8s.io/v1
-kind: StorageCass
-metadata:
-  name:
-provisioner: kubernetes.io/
-parameters:
-  type: pb-standard
-  fstype: ext4

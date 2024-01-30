@@ -1,5 +1,4 @@
 from sqlalchemy.orm import Session
-from infrastructure import database
 from core.model.categoria import Categoria as CategoriaModel
 from core.model.orm.categoria import Categoria as CategoriaORM
 from core.ports.categoria_repository import CategoriaRepository

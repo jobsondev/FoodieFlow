@@ -1,11 +1,11 @@
 python:
-  - replicaCount: 1
-    image:
-      repository: edersonpaz/foodieflow
-      tag: v1
-    service:
-      type: NodePort
-      port: 8000
+  replicaCount: 1
+  image:
+    repository: edersonpaz/foodieflow
+    tag: v1
+  service:
+    type: NodePort
+    port: 8000
 
 postgres:
   image:
@@ -16,4 +16,3 @@ postgres:
     port: 5432
   persistence:
     size: 1Gi
-
