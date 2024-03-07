@@ -2,10 +2,21 @@ import daiquiri
 import uvicorn
 from application.commons.logging import configure as config_logging
 from application.commons.response import make_response
-from application.entrypoint import (categoria_controller, cliente_controller,
-                                    pedido_controller, produto_controller)
-from core.model.orm import (categoria, cliente, imagem, ingrediente, pedido,
-                            produto, status)
+from application.entrypoint import (
+    categoria_controller,
+    cliente_controller,
+    pedido_controller,
+    produto_controller,
+)
+from core.model.orm import (
+    categoria,
+    cliente,
+    imagem,
+    ingrediente,
+    pedido,
+    produto,
+    status,
+)
 from decouple import config
 from fastapi import FastAPI, Request, Response
 from infrastructure.database import init_db
