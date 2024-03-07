@@ -1,8 +1,9 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DECIMAL
-from sqlalchemy.orm import relationship
-from sqlalchemy.ext.declarative import declarative_base
-from infrastructure.database import Base
 from core.model.orm.ingrediente import produto_ingrediente
+from infrastructure.database import Base
+from sqlalchemy import DECIMAL, Column, ForeignKey, Integer, String
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import relationship
+
 
 class Produto(Base):
     __tablename__ = "produto"
@@ -11,9 +12,11 @@ class Produto(Base):
     nome = Column(String, nullable=False)
     descricao = Column(String)
     preco = Column(DECIMAL, nullable=False)
-    id_categoria = Column(Integer, ForeignKey('categoria.id'), nullable=False)
+    id_categoria = Column(Integer, ForeignKey("categoria.id"), nullable=False)
 
     # Relacionamentos
     categoria = relationship("Categoria", backref="produtos")
-    ingredientes = relationship("Ingrediente", secondary=produto_ingrediente, backref="produtos")
+    ingredientes = relationship(
+        "Ingrediente", secondary=produto_ingrediente, backref="produtos"
+    )
     imagens = relationship("Imagem", backref="produto")

@@ -1,6 +1,7 @@
+from infrastructure.database import Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
-from infrastructure.database import Base
+
 
 class Status(Base):
     __tablename__ = "status"

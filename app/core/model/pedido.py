@@ -1,8 +1,10 @@
 from typing import List, Optional
-from pydantic import BaseModel
+
 from core.model.cliente import Cliente
 from core.model.produto import Produto
 from core.model.status import Status
+from pydantic import BaseModel
+
 
 class PedidoBase(BaseModel):
     codigo: str
@@ -10,11 +12,13 @@ class PedidoBase(BaseModel):
     id_status: int
     produtos: List[int]
 
+
 class Pedido(PedidoBase):
     id: Optional[int] = None
 
     class Config:
         from_attributes = True
+
 
 class PedidoCompleto(Pedido):
     cliente: Cliente

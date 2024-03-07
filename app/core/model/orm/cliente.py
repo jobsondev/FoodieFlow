@@ -1,8 +1,8 @@
+from infrastructure.database import Base
 from sqlalchemy import Column, Integer, String
-from sqlalchemy.dialects.postgresql import VARCHAR, INTEGER
+from sqlalchemy.dialects.postgresql import INTEGER, VARCHAR
 from sqlalchemy.ext.declarative import declarative_base
 
-from infrastructure.database import Base
 
 class Cliente(Base):
     __tablename__ = "cliente"

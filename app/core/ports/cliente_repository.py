@@ -1,16 +1,18 @@
 from abc import ABC, abstractmethod
-from sqlalchemy.orm import Session
+
 from core.model.cliente import Cliente as ClienteModel
+from sqlalchemy.orm import Session
+
 
 class ClienteRepository(ABC):
     @abstractmethod
     def create_cliente(self, db: Session, cliente: ClienteModel):
         pass
-    
+
     @abstractmethod
     def get_cliente(self, db: Session, cliente_id: int):
         pass
-    
+
     @abstractmethod
     def get_cliente_by_cpf(self, db: Session, cpf: str):
         pass
@@ -20,9 +22,11 @@ class ClienteRepository(ABC):
         pass
 
     @abstractmethod
-    def update_cliente(self, db: Session, cliente_id: int, updated_cliente: ClienteModel):
+    def update_cliente(
+        self, db: Session, cliente_id: int, updated_cliente: ClienteModel
+    ):
         pass
-    
+
     @abstractmethod
     def delete_cliente(self, db: Session, cliente_id: int):
         pass

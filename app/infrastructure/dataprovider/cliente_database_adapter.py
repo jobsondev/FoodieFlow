@@ -1,8 +1,9 @@
-from sqlalchemy.orm import Session
-from infrastructure import database
 from core.model.cliente import Cliente as ClienteModel
 from core.model.orm.cliente import Cliente as ClienteORM
 from core.ports.cliente_repository import ClienteRepository
+from infrastructure import database
+from sqlalchemy.orm import Session
+
 
 class ClienteDatabaseAdapter(ClienteRepository):
     def create_cliente(self, db: Session, cliente: ClienteModel):
@@ -20,15 +21,17 @@ class ClienteDatabaseAdapter(ClienteRepository):
 
     def get_clientes(self, db: Session, skip: int = 0, limit: int = 100):
         return db.query(ClienteORM).offset(skip).limit(limit).all()
-    
-    def update_cliente(self, db: Session, cliente_id: int, updated_cliente: ClienteModel):
+
+    def update_cliente(
+        self, db: Session, cliente_id: int, updated_cliente: ClienteModel
+    ):
         db_cliente = db.query(ClienteORM).filter(ClienteORM.id == cliente_id).first()
         for field, value in updated_cliente.dict(exclude_unset=True).items():
             setattr(db_cliente, field, value)
         db.commit()
         db.refresh(db_cliente)
         return db_cliente
-    
+
     def delete_cliente(self, db: Session, cliente_id: int):
         db_cliente = db.query(ClienteORM).filter(ClienteORM.id == cliente_id).first()
         if not db_cliente:
@@ -36,4 +39,3 @@ class ClienteDatabaseAdapter(ClienteRepository):
         db.delete(db_cliente)
         db.commit()
         return True
-        

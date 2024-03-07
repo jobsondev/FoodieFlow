@@ -1,15 +1,16 @@
-from sqlalchemy import Table, Column, Integer, ForeignKey, String
-from sqlalchemy.dialects.postgresql import VARCHAR, INTEGER
-from sqlalchemy.ext.declarative import declarative_base
-
 from infrastructure.database import Base
+from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy.dialects.postgresql import INTEGER, VARCHAR
+from sqlalchemy.ext.declarative import declarative_base
 
 # Tabela associativa para o relacionamento entre Produto e Ingrediente
 produto_ingrediente = Table(
-    'produto_ingrediente', Base.metadata,
-    Column('id_produto', Integer, ForeignKey('produto.id')),
-    Column('id_ingrediente', Integer, ForeignKey('ingrediente.id'))
+    "produto_ingrediente",
+    Base.metadata,
+    Column("id_produto", Integer, ForeignKey("produto.id")),
+    Column("id_ingrediente", Integer, ForeignKey("ingrediente.id")),
 )
+
 
 class Ingrediente(Base):
     __tablename__ = "ingrediente"
