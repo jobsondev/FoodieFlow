@@ -1,10 +1,9 @@
 from typing import Any, Dict
 
 import simplejson
+from application.commons.converter import custom_json_converter
 from decouple import config
 from fastapi import Request, Response
-
-from application.commons.converter import custom_json_converter
 
 
 def make_response(

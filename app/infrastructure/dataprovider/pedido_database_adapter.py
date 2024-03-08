@@ -1,8 +1,6 @@
 import datetime
 import string
 
-from sqlalchemy.orm import Session
-
 from application.commons.enums.status import StatusEnum
 from core.model.cliente import Cliente as ClienteModel
 from core.model.orm.pedido import Pedido as PedidoORM
@@ -12,6 +10,7 @@ from core.model.pedido import PedidoCompleto
 from core.model.produto import Produto as ProdutoModel
 from core.model.status import Status as StatusModel
 from core.ports.pedido_repository import PedidoRepository
+from sqlalchemy.orm import Session
 
 
 class PedidoDatabaseAdapter(PedidoRepository):

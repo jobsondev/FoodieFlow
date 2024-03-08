@@ -1,8 +1,7 @@
 from abc import ABC, abstractmethod
 
-from sqlalchemy.orm import Session
-
 from core.model.pedido import Pedido as PedidoModel
+from sqlalchemy.orm import Session
 
 
 class PedidoRepository(ABC):

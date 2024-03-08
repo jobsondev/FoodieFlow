@@ -1,7 +1,6 @@
-from sqlalchemy.orm import Session
-
 from core.model.pedido import Pedido as PedidoModel
 from core.ports.pedido_repository import PedidoRepository
+from sqlalchemy.orm import Session
 
 
 class PedidoServiceImpl:

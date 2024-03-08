@@ -1,7 +1,6 @@
-from sqlalchemy.orm import Session
-
 from core.model.categoria import Categoria as CategoriaModel
 from core.ports.categoria_repository import CategoriaRepository
+from sqlalchemy.orm import Session
 
 
 class CategoriaServiceImpl:

@@ -1,5 +1,3 @@
-from sqlalchemy.orm import Session, joinedload
-
 from core.model.imagem import Imagem
 from core.model.ingrediente import Ingrediente
 from core.model.orm.imagem import Imagem as ImagemORM
@@ -8,6 +6,7 @@ from core.model.orm.produto import Produto as ProdutoORM
 from core.model.produto import Produto as ProdutoModel
 from core.model.produto import ProdutoCompleto
 from core.ports.produto_repository import ProdutoRepository
+from sqlalchemy.orm import Session, joinedload
 
 
 class ProdutoDatabaseAdapter(ProdutoRepository):
