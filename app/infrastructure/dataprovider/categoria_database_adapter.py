@@ -13,19 +13,28 @@ class CategoriaDatabaseAdapter(CategoriaRepository):
         return db_categoria
 
     def get_categoria(self, db: Session, categoria_id: int):
-        return db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+        return (db.query(CategoriaORM)
+                .filter(CategoriaORM.id == categoria_id)
+                .first())
 
     def get_categorias(self, db: Session, skip: int = 0, limit: int = 100):
-        return db.query(CategoriaORM).offset(skip).limit(limit).all()
+        return (db.query(CategoriaORM)
+                .offset(skip)
+                .limit(limit)
+                .all())
 
     def get_categoria_by_nome(self, db: Session, nome: str):
-        return db.query(CategoriaORM).filter(CategoriaORM.nome == nome).first()
+        return (db.query(CategoriaORM)
+                .filter(CategoriaORM.nome == nome)
+                .first())
 
     def update_categoria(
         self, db: Session, categoria_id: int, updated_categoria: CategoriaModel
     ):
         db_categoria = (
-            db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+            db.query(CategoriaORM)
+            .filter(CategoriaORM.id == categoria_id)
+            .first()
         )
         for field, value in updated_categoria.dict(exclude_unset=True).items():
             setattr(db_categoria, field, value)
@@ -35,7 +44,9 @@ class CategoriaDatabaseAdapter(CategoriaRepository):
 
     def delete_categoria(self, db: Session, categoria_id: int):
         db_categoria = (
-            db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+            db.query(CategoriaORM)
+            .filter(CategoriaORM.id == categoria_id)
+            .first()
         )
         if not db_categoria:
             return False
