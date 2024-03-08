@@ -68,7 +68,7 @@ def read_cliente_by_cpf(cpf: str, db: Session = Depends(get_db)):
 )
 def read_clientes(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     try:
-        log.info(f"Buscando clientes")
+        log.info("Buscando clientes")
         return cliente_service.get_clientes(db, skip, limit)
     except Exception as ex:
         log.error(f"Erro ao buscar clientes. {str(ex)}")

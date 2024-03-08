@@ -69,7 +69,7 @@ def read_produtos_by_categoria(id_categoria: int, db: Session = Depends(get_db))
 )
 def read_produtos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     try:
-        log.info(f"Buscando produtos")
+        log.info("Buscando produtos")
         return produto_service.get_produtos(db, skip, limit)
     except Exception as ex:
         log.error(f"Erro ao buscar produtos. {str(ex)}")

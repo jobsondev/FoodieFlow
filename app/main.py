@@ -44,7 +44,7 @@ async def startup_event():
 @app.get("/healthcheck", description="Healthcheck da API")
 @app.options("/healthcheck", description="Healthcheck da API")
 async def healthcheck(request: Request) -> Response:
-    log.info(f"Healthcheck solicitado")
+    log.info("Healthcheck solicitado")
     return make_response(request=request, body={"status": "UP"}, status_code=200)
 
 

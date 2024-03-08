@@ -29,10 +29,10 @@ def create_pedido(pedido: PedidoModel, db: Session = Depends(get_db)):
 @router.get("/", response_model=list[PedidoModel], description="Busca todos os pedidos")
 def read_all_pedidos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     try:
-        log.info(f"Buscando pedidos")
+        log.info("Buscando pedidos")
         pedidos = pedido_service.get_pedidos(db, skip, limit)
         if not pedidos:
-            raise HTTPException(status_code=404, detail=f"Pedidos não encontrados")
+            raise HTTPException(status_code=404, detail="Pedidos não encontrados")
         return pedidos
     except HTTPException:
         raise
@@ -73,13 +73,13 @@ def read_pedidos_by_status_em_preparacao(
     skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 ):
     try:
-        log.info(f"Buscando pedidos com status 2")
+        log.info("Buscando pedidos com status 2")
         pedidos = pedido_service.get_pedidos_by_status(
             db, StatusEnum.EM_PREPARACAO.value, skip, limit
         )
         if not pedidos:
             raise HTTPException(
-                status_code=404, detail=f"Pedidos não encontrados com o status 2"
+                status_code=404, detail="Pedidos não encontrados com o status 2"
             )
         return pedidos
     except HTTPException:

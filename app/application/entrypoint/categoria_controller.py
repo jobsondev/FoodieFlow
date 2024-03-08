@@ -53,7 +53,7 @@ def read_categoria(categoria_id: int, db: Session = Depends(get_db)):
 )
 def read_categorias(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     try:
-        log.info(f"Buscando categorias")
+        log.info("Buscando categorias")
         return categoria_service.get_categorias(db, skip, limit)
     except Exception as ex:
         log.error(f"Erro ao buscar categorias. {str(ex)}")
