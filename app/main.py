@@ -5,8 +5,12 @@ from fastapi import FastAPI, Request, Response
 
 from application.commons.logging import configure as config_logging
 from application.commons.response import make_response
-from application.entrypoint import (categoria_controller, cliente_controller,
-                                    pedido_controller, produto_controller)
+from application.entrypoint import (
+    categoria_controller,
+    cliente_controller,
+    pedido_controller,
+    produto_controller,
+)
 from infrastructure.database import init_db
 
 HOST = config("HOST_API", default="localhost")
@@ -41,11 +45,7 @@ async def startup_event():
 @app.options("/healthcheck", description="Healthcheck da API")
 async def healthcheck(request: Request) -> Response:
     log.info(f"Healthcheck solicitado")
-    return make_response(
-        request=request,
-        body={
-            "status": "UP"},
-        status_code=200)
+    return make_response(request=request, body={"status": "UP"}, status_code=200)
 
 
 if __name__ == "__main__":

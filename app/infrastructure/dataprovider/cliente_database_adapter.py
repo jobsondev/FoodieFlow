@@ -25,8 +25,7 @@ class ClienteDatabaseAdapter(ClienteRepository):
     def update_cliente(
         self, db: Session, cliente_id: int, updated_cliente: ClienteModel
     ):
-        db_cliente = db.query(ClienteORM).filter(
-            ClienteORM.id == cliente_id).first()
+        db_cliente = db.query(ClienteORM).filter(ClienteORM.id == cliente_id).first()
         for field, value in updated_cliente.dict(exclude_unset=True).items():
             setattr(db_cliente, field, value)
         db.commit()
@@ -34,8 +33,7 @@ class ClienteDatabaseAdapter(ClienteRepository):
         return db_cliente
 
     def delete_cliente(self, db: Session, cliente_id: int):
-        db_cliente = db.query(ClienteORM).filter(
-            ClienteORM.id == cliente_id).first()
+        db_cliente = db.query(ClienteORM).filter(ClienteORM.id == cliente_id).first()
         if not db_cliente:
             return False
         db.delete(db_cliente)

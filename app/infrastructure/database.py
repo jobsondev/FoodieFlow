@@ -11,9 +11,7 @@ load_dotenv()
 
 # Pegando as configuracoes do .env
 DB_USER = config("POSTGRES_USER", default=os.getenv("POSTGRES_USER"))
-DB_PASSWORD = config(
-    "POSTGRES_PASSWORD",
-    default=os.getenv("POSTGRES_PASSWORD"))
+DB_PASSWORD = config("POSTGRES_PASSWORD", default=os.getenv("POSTGRES_PASSWORD"))
 DB_NAME = config("POSTGRES_DB", default=os.getenv("POSTGRES_DB"))
 DB_HOST = config("POSTGRES_HOST", default=os.getenv("POSTGRES_HOST"))
 

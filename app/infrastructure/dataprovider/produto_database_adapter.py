@@ -30,10 +30,7 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
             ],
         )
 
-    def create_produto(
-            self,
-            db: Session,
-            produto: ProdutoModel) -> ProdutoCompleto:
+    def create_produto(self, db: Session, produto: ProdutoModel) -> ProdutoCompleto:
         produto_data = produto.dict(exclude={"ingredientes", "imagens"})
         db_produto = ProdutoORM(**produto_data)
 
@@ -54,8 +51,7 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
         imagens = produto.dict().get("imagens")
         if imagens:
             for imagem_path in imagens:
-                new_image = ImagemORM(
-                    caminho=imagem_path, id_produto=db_produto.id)
+                new_image = ImagemORM(caminho=imagem_path, id_produto=db_produto.id)
                 db.add(new_image)
             db.commit()
 
@@ -65,11 +61,13 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
 
     def get_produto(self, db: Session, produto_id: int):
         produto = (
-            db.query(ProdutoORM) .options(
-                joinedload(
-                    ProdutoORM.ingredientes), joinedload(
-                    ProdutoORM.imagens)) .filter(
-                ProdutoORM.id == produto_id) .first())
+            db.query(ProdutoORM)
+            .options(
+                joinedload(ProdutoORM.ingredientes), joinedload(ProdutoORM.imagens)
+            )
+            .filter(ProdutoORM.id == produto_id)
+            .first()
+        )
 
         if not produto:
             return None
@@ -78,10 +76,14 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
 
     def get_produtos(self, db: Session, skip: int = 0, limit: int = 100):
         produtos = (
-            db.query(ProdutoORM) .options(
-                joinedload(
-                    ProdutoORM.ingredientes), joinedload(
-                    ProdutoORM.imagens)) .offset(skip) .limit(limit) .all())
+            db.query(ProdutoORM)
+            .options(
+                joinedload(ProdutoORM.ingredientes), joinedload(ProdutoORM.imagens)
+            )
+            .offset(skip)
+            .limit(limit)
+            .all()
+        )
 
         return [self._to_produto_completo(produto) for produto in produtos]
 
@@ -104,8 +106,7 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
     def update_produto(
         self, db: Session, produto_id: int, updated_produto: ProdutoModel
     ) -> ProdutoCompleto:
-        db_produto = db.query(ProdutoORM).filter(
-            ProdutoORM.id == produto_id).first()
+        db_produto = db.query(ProdutoORM).filter(ProdutoORM.id == produto_id).first()
 
         if not db_produto:
             return None
@@ -131,13 +132,11 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
         imagens = updated_produto.dict().get("imagens")
         if imagens:
             # Removendo imagens existentes
-            db.query(ImagemORM).filter(
-                ImagemORM.id_produto == db_produto.id).delete()
+            db.query(ImagemORM).filter(ImagemORM.id_produto == db_produto.id).delete()
 
             # Adicionando novas imagens
             for imagem_path in imagens:
-                new_image = ImagemORM(
-                    caminho=imagem_path, id_produto=db_produto.id)
+                new_image = ImagemORM(caminho=imagem_path, id_produto=db_produto.id)
                 db.add(new_image)
 
         db.commit()
@@ -146,8 +145,7 @@ class ProdutoDatabaseAdapter(ProdutoRepository):
         return self._to_produto_completo(db_produto)
 
     def delete_produto(self, db: Session, produto_id: int):
-        db_produto = db.query(ProdutoORM).filter(
-            ProdutoORM.id == produto_id).first()
+        db_produto = db.query(ProdutoORM).filter(ProdutoORM.id == produto_id).first()
 
         if not db_produto:
             return False

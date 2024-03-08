@@ -50,9 +50,7 @@ class PedidoDatabaseAdapter(PedidoRepository):
         )
 
         # Convertendo os dados do ORM Status para o modelo Status
-        status_model = StatusModel(
-            id=pedido.status.id,
-            nome=pedido.status.nome)
+        status_model = StatusModel(id=pedido.status.id, nome=pedido.status.nome)
 
         pedido_completo = PedidoCompleto(
             id=pedido.id,
@@ -75,10 +73,7 @@ class PedidoDatabaseAdapter(PedidoRepository):
 
         return pedido_completo
 
-    def create_pedido(
-            self,
-            db: Session,
-            pedido: PedidoModel) -> PedidoCompleto:
+    def create_pedido(self, db: Session, pedido: PedidoModel) -> PedidoCompleto:
         # Obter os dados do pedido excluindo "produtos"
         pedido_data = pedido.dict(exclude={"produtos"})
 
@@ -134,8 +129,7 @@ class PedidoDatabaseAdapter(PedidoRepository):
         return [self._to_pedido_completo(pedido) for pedido in pedidos]
 
     def atualizar_status_para_preparacao(self, db: Session, pedido_id: int):
-        db_pedido = db.query(PedidoORM).filter(
-            PedidoORM.id == pedido_id).first()
+        db_pedido = db.query(PedidoORM).filter(PedidoORM.id == pedido_id).first()
         if not db_pedido:
             return False
 
