@@ -26,7 +26,8 @@ class ProdutoServiceImpl:
     def update_produto(
         self, db: Session, produto_id: int, updated_produto: ProdutoModel
     ):
-        return self.produto_repository.update_produto(db, produto_id, updated_produto)
+        return self.produto_repository.update_produto(
+            db, produto_id, updated_produto)
 
     def delete_produto(self, db: Session, produto_id: int):
         return self.produto_repository.delete_produto(db, produto_id)

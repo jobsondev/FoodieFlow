@@ -1,6 +1,5 @@
 import logging
 import sys
-
 import daiquiri
 from daiquiri import formatter
 from decouple import config
@@ -22,8 +21,10 @@ def configure():
         )
     else:
         daiquiri.setup(
-            outputs=[daiquiri.output.Stream(stream=sys.stdout)], level=logging.INFO
-        )
+            outputs=[
+                daiquiri.output.Stream(
+                    stream=sys.stdout)],
+            level=logging.INFO)
 
     LOGGING_CONFIG["loggers"] = {}
     daiquiri.set_default_log_levels(

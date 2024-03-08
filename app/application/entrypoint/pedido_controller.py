@@ -16,7 +16,8 @@ pedido_repository: PedidoRepository = PedidoDatabaseAdapter()
 pedido_service = PedidoServiceImpl(pedido_repository)
 
 
-@router.post("/", response_model=PedidoModel, description="Cria um novo pedido")
+@router.post("/", response_model=PedidoModel,
+             description="Cria um novo pedido")
 def create_pedido(pedido: PedidoModel, db: Session = Depends(get_db)):
     try:
         log.info(f"Pedido para criação: {pedido}")
@@ -26,7 +27,9 @@ def create_pedido(pedido: PedidoModel, db: Session = Depends(get_db)):
         raise HTTPException(status_code=400, detail="Erro ao criar pedido")
 
 
-@router.get("/", response_model=list[PedidoModel], description="Busca todos os pedidos")
+@router.get("/",
+            response_model=list[PedidoModel],
+            description="Busca todos os pedidos")
 def read_pedidos_by_status(
     skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 ):
@@ -34,7 +37,9 @@ def read_pedidos_by_status(
         log.info(f"Buscando pedidos")
         pedidos = pedido_service.get_pedidos(db, skip, limit)
         if not pedidos:
-            raise HTTPException(status_code=404, detail=f"Pedidos não encontrados")
+            raise HTTPException(
+                status_code=404,
+                detail=f"Pedidos não encontrados")
         return pedidos
     except HTTPException:
         raise
@@ -56,8 +61,8 @@ def read_pedidos_by_status(
         pedidos = pedido_service.get_pedidos_by_status(db, status, skip, limit)
         if not pedidos:
             raise HTTPException(
-                status_code=404, detail=f"Pedidos não encontrados com o status {status}"
-            )
+                status_code=404,
+                detail=f"Pedidos não encontrados com o status {status}")
         return pedidos
     except HTTPException:
         raise
@@ -81,8 +86,8 @@ def read_pedidos_by_status(
         )
         if not pedidos:
             raise HTTPException(
-                status_code=404, detail=f"Pedidos não encontrados com o status 2"
-            )
+                status_code=404,
+                detail=f"Pedidos não encontrados com o status 2")
         return pedidos
     except HTTPException:
         raise
@@ -95,12 +100,18 @@ def read_pedidos_by_status(
     "/checkout/{pedido_id}",
     description="Atualiza o status do pedido para 'Em preparação'",
 )
-def update_pedido_to_preparation(pedido_id: int, db: Session = Depends(get_db)):
+def update_pedido_to_preparation(
+        pedido_id: int,
+        db: Session = Depends(get_db)):
     try:
-        log.info(f"Atualizando status do pedido {pedido_id} para 'Em preparação'")
-        success = pedido_service.atualizar_status_para_preparacao(db, pedido_id)
+        log.info(f"Atualizando status do pedido {
+                 pedido_id} para 'Em preparação'")
+        success = pedido_service.atualizar_status_para_preparacao(
+            db, pedido_id)
         if not success:
-            raise HTTPException(status_code=404, detail="Pedido não encontrado")
+            raise HTTPException(
+                status_code=404,
+                detail="Pedido não encontrado")
         return {"message": "Pedido atualizado com sucesso!"}
     except HTTPException:
         raise

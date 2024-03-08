@@ -22,4 +22,7 @@ class Pedido(Base):
     # Relacionamentos
     cliente = relationship("Cliente", backref="pedidos")
     status = relationship("Status", backref="pedidos")
-    produtos = relationship("Produto", secondary=pedido_produto, backref="pedidos")
+    produtos = relationship(
+        "Produto",
+        secondary=pedido_produto,
+        backref="pedidos")

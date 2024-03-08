@@ -34,7 +34,8 @@ class PedidoDatabaseAdapter(PedidoRepository):
         base10_num = now.hour * 3600 + now.minute * 60 + now.second
         # Convertendo esse número para base 62 para compactação
         base62_num = self.from_base10_to_base62(base10_num)
-        # Garantindo que a saída tenha 4 caracteres, preenchendo com zeros à esquerda se necessário
+        # Garantindo que a saída tenha 4 caracteres, preenchendo com zeros à
+        # esquerda se necessário
         unique_code = base62_num.rjust(4, "0")
         return prefix + unique_code
 
@@ -48,7 +49,9 @@ class PedidoDatabaseAdapter(PedidoRepository):
         )
 
         # Convertendo os dados do ORM Status para o modelo Status
-        status_model = StatusModel(id=pedido.status.id, nome=pedido.status.nome)
+        status_model = StatusModel(
+            id=pedido.status.id,
+            nome=pedido.status.nome)
 
         pedido_completo = PedidoCompleto(
             id=pedido.id,
@@ -71,7 +74,10 @@ class PedidoDatabaseAdapter(PedidoRepository):
 
         return pedido_completo
 
-    def create_pedido(self, db: Session, pedido: PedidoModel) -> PedidoCompleto:
+    def create_pedido(
+            self,
+            db: Session,
+            pedido: PedidoModel) -> PedidoCompleto:
         # Obter os dados do pedido excluindo "produtos"
         pedido_data = pedido.dict(exclude={"produtos"})
 
@@ -127,7 +133,8 @@ class PedidoDatabaseAdapter(PedidoRepository):
         return [self._to_pedido_completo(pedido) for pedido in pedidos]
 
     def atualizar_status_para_preparacao(self, db: Session, pedido_id: int):
-        db_pedido = db.query(PedidoORM).filter(PedidoORM.id == pedido_id).first()
+        db_pedido = db.query(PedidoORM).filter(
+            PedidoORM.id == pedido_id).first()
         if not db_pedido:
             return False
 

@@ -16,7 +16,9 @@ class PedidoServiceImpl:
     def get_pedidos_by_status(
         self, db: Session, status: int, skip: int = 0, limit: int = 100
     ):
-        return self.pedido_repository.get_pedidos_by_status(db, status, skip, limit)
+        return self.pedido_repository.get_pedidos_by_status(
+            db, status, skip, limit)
 
     def atualizar_status_para_preparacao(self, db: Session, pedido_id: int):
-        return self.pedido_repository.atualizar_status_para_preparacao(db, pedido_id)
+        return self.pedido_repository.atualizar_status_para_preparacao(
+            db, pedido_id)

@@ -38,10 +38,12 @@ def make_response(
         join_headers = {**default_headers, **headers}
 
         if body_type in (list, dict):
-            join_headers.update({"Content-Type": "application/json; charset=utf-8"})
+            join_headers.update(
+                {"Content-Type": "application/json; charset=utf-8"})
             message_template["data"] = body
         elif body_type is str:
-            join_headers.update({"Content-Type": "application/json; charset=utf-8"})
+            join_headers.update(
+                {"Content-Type": "application/json; charset=utf-8"})
             message_template["message"] = body
         elif body_type is bytes:
             join_headers.update({"Content-Type": "application/csv"})
