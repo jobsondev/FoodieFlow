@@ -7,8 +7,7 @@ from core.model.pedido import Pedido as PedidoModel
 from core.ports.pedido_repository import PedidoRepository
 from core.usecases.pedido_service_impl import PedidoServiceImpl
 from infrastructure.database import get_db
-from infrastructure.dataprovider.pedido_database_adapter import \
-    PedidoDatabaseAdapter
+from infrastructure.dataprovider.pedido_database_adapter import PedidoDatabaseAdapter
 
 router = APIRouter()
 log = daiquiri.getLogger(__name__)
@@ -28,9 +27,7 @@ def create_pedido(pedido: PedidoModel, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=list[PedidoModel], description="Busca todos os pedidos")
-def read_all_pedidos(
-    skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
-):
+def read_all_pedidos(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     try:
         log.info(f"Buscando pedidos")
         pedidos = pedido_service.get_pedidos(db, skip, limit)
