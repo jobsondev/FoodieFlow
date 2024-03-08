@@ -1,7 +1,7 @@
 import pytest
 from unittest.mock import Mock
-from app.core.model.categoria import Categoria as CategoriaModel
-from app.core.usecases.categoria_service_impl import CategoriaServiceImpl
+from core.model.categoria import Categoria as CategoriaModel
+from core.usecases.categoria_service_impl import CategoriaServiceImpl
 
 
 class TestCategoriaServiceImpl:
