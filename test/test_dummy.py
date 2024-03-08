@@ -1,5 +1,5 @@
 import pytest
 
 
-def test_dummy():
+def testDummy():
     assert True
