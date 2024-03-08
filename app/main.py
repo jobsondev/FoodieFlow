@@ -1,6 +1,6 @@
 import daiquiri
-import uvicorn
 from decouple import config
+import uvicorn
 from fastapi import FastAPI, Request, Response
 
 from application.commons.logging import configure as config_logging
