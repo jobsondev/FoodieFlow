@@ -1,11 +1,12 @@
 import daiquiri
-from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.orm import Session
 from core.model.produto import Produto as ProdutoModel
 from core.ports.produto_repository import ProdutoRepository
 from core.usecases.produto_service_impl import ProdutoServiceImpl
+from fastapi import APIRouter, Depends, HTTPException
 from infrastructure.database import get_db
-from infrastructure.dataprovider.produto_database_adapter import ProdutoDatabaseAdapter
+from infrastructure.dataprovider.produto_database_adapter import \
+    ProdutoDatabaseAdapter
+from sqlalchemy.orm import Session
 
 router = APIRouter()
 log = daiquiri.getLogger(__name__)
