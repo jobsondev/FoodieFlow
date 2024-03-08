@@ -1,12 +1,18 @@
-import daiquiri
-from decouple import config
 import uvicorn
+
+from decouple import config
 from fastapi import FastAPI, Request, Response
+
+import daiquiri
 
 from application.commons.logging import configure as config_logging
 from application.commons.response import make_response
-from application.entrypoint import (categoria_controller, cliente_controller,
-                                    pedido_controller, produto_controller)
+from application.entrypoint import (
+    categoria_controller,
+    cliente_controller,
+    pedido_controller,
+    produto_controller,
+)
 from infrastructure.database import init_db
 
 HOST = config("HOST_API", default="localhost")
