@@ -27,7 +27,7 @@ def create_pedido(pedido: PedidoModel, db: Session = Depends(get_db)):
 
 
 @router.get("/", response_model=list[PedidoModel], description="Busca todos os pedidos")
-def read_pedidos_by_status(
+def read_all_pedidos(
     skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 ):
     try:
@@ -71,7 +71,7 @@ def read_pedidos_by_status(
     response_model=list[PedidoModel],
     description="Listar todos os pedidos Em Preparação",
 )
-def read_pedidos_by_status(
+def read_pedidos_by_status_em_preparacao(
     skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 ):
     try:
