@@ -1,6 +1,5 @@
 from infrastructure.database import Base
 from sqlalchemy import Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 
 
 class Imagem(Base):

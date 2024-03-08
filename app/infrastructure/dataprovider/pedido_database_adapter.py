@@ -3,7 +3,6 @@ import string
 
 from application.commons.enums.status import StatusEnum
 from core.model.cliente import Cliente as ClienteModel
-from core.model.orm.cliente import Cliente as ClienteORM
 from core.model.orm.pedido import Pedido as PedidoORM
 from core.model.orm.produto import Produto as ProdutoORM
 from core.model.pedido import Pedido as PedidoModel

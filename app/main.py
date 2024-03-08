@@ -8,15 +8,6 @@ from application.entrypoint import (
     pedido_controller,
     produto_controller,
 )
-from core.model.orm import (
-    categoria,
-    cliente,
-    imagem,
-    ingrediente,
-    pedido,
-    produto,
-    status,
-)
 from decouple import config
 from fastapi import FastAPI, Request, Response
 from infrastructure.database import init_db

@@ -1,7 +1,6 @@
 from infrastructure.database import Base
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column
 from sqlalchemy.dialects.postgresql import INTEGER, VARCHAR
-from sqlalchemy.ext.declarative import declarative_base
 
 
 class Cliente(Base):

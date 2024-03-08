@@ -1,7 +1,6 @@
 from core.model.orm.ingrediente import produto_ingrediente
 from infrastructure.database import Base
 from sqlalchemy import DECIMAL, Column, ForeignKey, Integer, String
-from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship
 
 
