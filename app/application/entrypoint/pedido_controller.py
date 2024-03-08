@@ -7,7 +7,8 @@ from core.model.pedido import Pedido as PedidoModel
 from core.ports.pedido_repository import PedidoRepository
 from core.usecases.pedido_service_impl import PedidoServiceImpl
 from infrastructure.database import get_db
-from infrastructure.dataprovider.pedido_database_adapter import PedidoDatabaseAdapter
+from infrastructure.dataprovider.pedido_database_adapter import \
+    PedidoDatabaseAdapter
 
 router = APIRouter()
 log = daiquiri.getLogger(__name__)
