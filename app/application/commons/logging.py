@@ -1,5 +1,6 @@
 import logging
 import sys
+
 import daiquiri
 from daiquiri import formatter
 from decouple import config

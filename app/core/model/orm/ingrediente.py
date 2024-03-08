@@ -1,5 +1,6 @@
-from infrastructure.database import Base
 from sqlalchemy import Column, ForeignKey, Integer, String, Table
+
+from infrastructure.database import Base
 
 # Tabela associativa para o relacionamento entre Produto e Ingrediente
 produto_ingrediente = Table(

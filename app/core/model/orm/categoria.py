@@ -1,5 +1,6 @@
-from infrastructure.database import Base
 from sqlalchemy import Column, Integer, String
+
+from infrastructure.database import Base
 
 
 class Categoria(Base):

@@ -1,8 +1,9 @@
 from typing import List, Optional
 
+from pydantic import BaseModel
+
 from core.model.imagem import Imagem
 from core.model.ingrediente import Ingrediente
-from pydantic import BaseModel
 
 
 class ProdutoBase(BaseModel):

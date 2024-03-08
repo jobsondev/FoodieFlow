@@ -1,6 +1,7 @@
+from sqlalchemy.orm import Session
+
 from core.model.cliente import Cliente as ClienteModel
 from core.ports.cliente_repository import ClienteRepository
-from sqlalchemy.orm import Session
 
 
 class ClienteServiceImpl:

@@ -1,6 +1,7 @@
+from sqlalchemy.orm import Session
+
 from core.model.produto import Produto as ProdutoModel
 from core.ports.produto_repository import ProdutoRepository
-from sqlalchemy.orm import Session
 
 
 class ProdutoServiceImpl:
