@@ -1,7 +1,8 @@
-from sqlalchemy.orm import Session
 from core.model.categoria import Categoria as CategoriaModel
 from core.model.orm.categoria import Categoria as CategoriaORM
 from core.ports.categoria_repository import CategoriaRepository
+from sqlalchemy.orm import Session
+
 
 class CategoriaDatabaseAdapter(CategoriaRepository):
     def create_categoria(self, db: Session, categoria: CategoriaModel):
@@ -20,8 +21,12 @@ class CategoriaDatabaseAdapter(CategoriaRepository):
     def get_categoria_by_nome(self, db: Session, nome: str):
         return db.query(CategoriaORM).filter(CategoriaORM.nome == nome).first()
 
-    def update_categoria(self, db: Session, categoria_id: int, updated_categoria: CategoriaModel):
-        db_categoria = db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+    def update_categoria(
+        self, db: Session, categoria_id: int, updated_categoria: CategoriaModel
+    ):
+        db_categoria = (
+            db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+        )
         for field, value in updated_categoria.dict(exclude_unset=True).items():
             setattr(db_categoria, field, value)
         db.commit()
@@ -29,9 +34,11 @@ class CategoriaDatabaseAdapter(CategoriaRepository):
         return db_categoria
 
     def delete_categoria(self, db: Session, categoria_id: int):
-        db_categoria = db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+        db_categoria = (
+            db.query(CategoriaORM).filter(CategoriaORM.id == categoria_id).first()
+        )
         if not db_categoria:
             return False
         db.delete(db_categoria)
         db.commit()
-        return True 
+        return True

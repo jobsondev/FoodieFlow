@@ -1,0 +1,2 @@
+def testDummy():
+    assert True

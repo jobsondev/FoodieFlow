@@ -1,8 +1,6 @@
-from sqlalchemy import Column, Integer, String
-from sqlalchemy.dialects.postgresql import VARCHAR, INTEGER
-from sqlalchemy.ext.declarative import declarative_base
-
 from infrastructure.database import Base
+from sqlalchemy import Column, Integer, String
+
 
 class Categoria(Base):
     __tablename__ = "categoria"
