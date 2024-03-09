@@ -5,8 +5,7 @@ from core.ports.pedido_repository import PedidoRepository
 from core.usecases.pedido_service_impl import PedidoServiceImpl
 from fastapi import APIRouter, Depends, HTTPException
 from infrastructure.database import get_db
-from infrastructure.dataprovider.pedido_database_adapter import \
-    PedidoDatabaseAdapter
+from infrastructure.dataprovider.pedido_database_adapter import PedidoDatabaseAdapter
 from sqlalchemy.orm import Session
 
 router = APIRouter()

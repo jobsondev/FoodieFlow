@@ -4,8 +4,9 @@ from core.ports.categoria_repository import CategoriaRepository
 from core.usecases.categoria_service_impl import CategoriaServiceImpl
 from fastapi import APIRouter, Depends, HTTPException
 from infrastructure.database import get_db
-from infrastructure.dataprovider.categoria_database_adapter import \
-    CategoriaDatabaseAdapter
+from infrastructure.dataprovider.categoria_database_adapter import (
+    CategoriaDatabaseAdapter,
+)
 from sqlalchemy.orm import Session
 
 router = APIRouter()

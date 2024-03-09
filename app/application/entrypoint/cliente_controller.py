@@ -4,8 +4,7 @@ from core.ports.cliente_repository import ClienteRepository
 from core.usecases.cliente_service_impl import ClienteServiceImpl
 from fastapi import APIRouter, Depends, HTTPException
 from infrastructure.database import get_db
-from infrastructure.dataprovider.cliente_database_adapter import \
-    ClienteDatabaseAdapter
+from infrastructure.dataprovider.cliente_database_adapter import ClienteDatabaseAdapter
 from sqlalchemy.orm import Session
 
 router = APIRouter()
