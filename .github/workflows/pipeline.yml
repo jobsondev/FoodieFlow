@@ -68,4 +68,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: edersonpaz/foodieflow:${{ github.ref }}
+        tags: edersonpaz/foodieflow:v5
