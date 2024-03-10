@@ -68,4 +68,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: your-dockerhub-username/your-repo-name:${{ github.ref }}
+        tags: edersonpaz/foodieflow:${{ github.ref }}
