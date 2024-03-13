@@ -31,7 +31,7 @@ jobs:
     - name: Run Flake8
       run: flake8 --count .
     - name: Run AutoFlake
-      run: autoflakeautoflake --remove-all-unused-imports --remove-unused-variables --in-place --recursive . --exclude=app/core/model/orm
+      run: autoflake --remove-all-unused-imports --remove-unused-variables --in-place --recursive . --exclude=app/core/model/orm
 
   build:
     needs: linter
