@@ -25,6 +25,7 @@ engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 
 def init_db():
+    print(SQLALCHEMY_DATABASE_URL)
     if not database_exists(SQLALCHEMY_DATABASE_URL):
         # Create the database if it doesn't exist
         create_database(SQLALCHEMY_DATABASE_URL)

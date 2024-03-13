@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
-
-from core.model.produto import Produto as ProdutoModel
 from sqlalchemy.orm import Session
+from core.model.produto import Produto as ProdutoModel
 
 
 class ProdutoRepository(ABC):

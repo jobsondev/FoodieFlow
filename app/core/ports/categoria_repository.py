@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
-
-from core.model.categoria import Categoria as CategoriaModel
 from sqlalchemy.orm import Session
+from core.model.categoria import Categoria as CategoriaModel
 
 
 class CategoriaRepository(ABC):

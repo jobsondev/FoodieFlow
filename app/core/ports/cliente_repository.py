@@ -1,7 +1,6 @@
 from abc import ABC, abstractmethod
-
-from core.model.cliente import Cliente as ClienteModel
 from sqlalchemy.orm import Session
+from core.model.cliente import Cliente as ClienteModel
 
 
 class ClienteRepository(ABC):

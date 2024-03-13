@@ -1,6 +1,9 @@
-from infrastructure.database import Base
-from sqlalchemy import Column, ForeignKey, Integer, String, Table
+from sqlalchemy import Column, Integer, String, ForeignKey, Table
 from sqlalchemy.orm import relationship
+from infrastructure.database import Base
+from core.model.orm.cliente import Cliente
+from core.model.orm.produto import Produto
+from core.model.orm.status import Status
 
 # Tabela associativa para o relacionamento entre Pedido e Produto
 pedido_produto = Table(
