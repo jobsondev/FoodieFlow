@@ -13,6 +13,11 @@ services:
       - 8000:8000
     depends_on:
       - gestao-postgresql
+      - rabbitmq
+    environment:
+        AMQP_URL: 'amqp://rabbitmq?connection_attempts=10&retry_delay=10'
+    volumes:
+      - ./consumer:/usr/src/app/consumer
 
   gestao-postgresql:
     image: postgres:14
@@ -29,6 +34,22 @@ services:
         limits:
           memory: 756M
 
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    restart: on-failure
+    ports:
+      - 5672:5672
+      - 15672:15672
+    networks:
+      - FIAP-network
+    volumes:
+      - rabbit_mqdata:/usr/share/rabbitmq/data
+
 networks:
   FIAP-network:
     driver: bridge
+
+volumes:
+    rabbit_mqdata:
+      driver: local
